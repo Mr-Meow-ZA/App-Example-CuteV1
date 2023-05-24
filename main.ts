@@ -26,10 +26,22 @@ microbitApp.onButtonOption(ButtonOption.Up, function () {
 })
 cuteBot.stopcar()
 cuteBot.closeheadlights()
+microbitApp.setLightState(LightOption.Light1, LightState.Off)
+microbitApp.setLightState(LightOption.Light2, LightState.Off)
 basic.forever(function () {
     if (microbitApp.getToggleState(ToggleOption.Toggle1) == 1) {
         microbitApp.sendValueOnceToApp(cuteBot.ultrasonic(cuteBot.SonarUnit.Centimeters))
     } else {
         microbitApp.sendStringToApp("Toggle 1 to show range")
+    }
+    if (cuteBot.trackSide(cuteBot.MbPins.Left, cuteBot.MbEvents.FindLine)) {
+        microbitApp.setLightState(LightOption.Light1, LightState.On)
+    } else {
+        microbitApp.setLightState(LightOption.Light1, LightState.Off)
+    }
+    if (cuteBot.trackSide(cuteBot.MbPins.Right, cuteBot.MbEvents.FindLine)) {
+        microbitApp.setLightState(LightOption.Light2, LightState.On)
+    } else {
+        microbitApp.setLightState(LightOption.Light2, LightState.Off)
     }
 })
