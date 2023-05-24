@@ -1,5 +1,5 @@
 {
-    "name": "test pxt-microbitAppCute",
+    "name": "App Example Cute V1",
     "description": "",
     "dependencies": {
         "core": "*",

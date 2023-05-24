@@ -27,5 +27,9 @@ microbitApp.onButtonOption(ButtonOption.Up, function () {
 cuteBot.stopcar()
 cuteBot.closeheadlights()
 basic.forever(function () {
-	
+    if (microbitApp.getToggleState(ToggleOption.Toggle1) == 1) {
+        microbitApp.sendValueOnceToApp(cuteBot.ultrasonic(cuteBot.SonarUnit.Centimeters))
+    } else {
+        microbitApp.sendStringToApp("Toggle 1 to show range")
+    }
 })
